@@ -1,4 +1,4 @@
-# Título do Projeto
+# Grupo 12 - Telemarketing
 
 `CURSO: Sistemas de Informação`
 
@@ -6,18 +6,18 @@
 
 `Eixo: 5`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Este projeto visa criar uma infraestrutura de rede sob medida para atender às necessidades específicas de uma empresa de telemarketing, proporcionando uma base sólida para a entrega de serviços de alta qualidade e experiências excepcionais aos clientes. Este projeto busca estabelecer uma rede ágil, segura e escalável, capacitando a empresa a se destacar no mercado.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
+* Alan Ferreira da Silva 
+* Amanda Andrade Lopes
+* Angelica Sofia Nieves
+* Estevão Moura Rodrigues
+* Yael Joaquim Nobre Dias
 
 ## Orientador
 
-* Nome completo do professor 1
+* Alexandre Teixeira
 
 

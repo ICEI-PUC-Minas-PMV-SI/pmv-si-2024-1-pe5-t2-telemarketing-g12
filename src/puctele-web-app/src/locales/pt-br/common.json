@@ -1,0 +1,25 @@
+{
+  "ticket": {
+    "type": {
+      "general": "Geral",
+      "asking": "Questões",
+      "sell": "Venda",
+      "upgrade": "Atualização",
+      "cancelation": "Cancelamento",
+      "complaint": "Reclamação"
+    },
+    "status": {
+      "open": "Aberta",
+      "progress": "Em Progresso",
+      "completed": "Finalizada",
+      "hold": "Em Espera",
+      "cancelled": "Cancelada"
+    },
+    "priority": {
+      "low": "Baixa",
+      "medium": "Média",
+      "high": "Alta",
+      "urgent": "Urgente"
+    }
+  }
+}

@@ -3,9 +3,8 @@
 import type { AuthProvider } from '@refinedev/core';
 import Cookies from 'js-cookie';
 import axios from 'axios';
-import 'dotenv/config'
 
-const apiUrl = process.env.API_URL;
+const apiUrl = process.env.API_URL || 'https://pmv-si-2024-1-pe5-t2-telemarketing-g12.onrender.com';
 
 export const authProvider : AuthProvider = {
   login: async ({ email, username, password, remember }) => {

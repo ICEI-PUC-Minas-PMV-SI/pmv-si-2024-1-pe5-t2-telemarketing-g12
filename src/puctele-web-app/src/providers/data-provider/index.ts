@@ -2,7 +2,6 @@
 import { DataProvider } from '@refinedev/core';
 import Cookies from 'js-cookie';
 import axios from 'axios';
-import 'dotenv/config'
 
 const axiosInstance = axios.create();
 
@@ -18,20 +17,20 @@ axiosInstance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-const apiUrl = process.env.API_URL || "http://localhost:4000";
+const apiUrl = process.env.API_URL || 'https://pmv-si-2024-1-pe5-t2-telemarketing-g12.onrender.com';
 
 export const dataProvider: DataProvider = {
   getList: async ({ resource, pagination }) => {
     const { current, pageSize } = pagination ?? {};
-    const response = await axiosInstance.get(`${apiUrl}/${resource}/`,{
+    const response = await axiosInstance.get(`${apiUrl}/${resource}/`, {
       params: { page: current, limit: pageSize },
     });
-   
+
     const { rows, count } = response.data.data;
 
     return {
       data: rows,
-      total: count
+      total: count,
     };
   },
 
@@ -55,9 +54,9 @@ export const dataProvider: DataProvider = {
 
   create: async ({ resource, variables }) => {
     let response;
-    if(resource == "user"){
+    if (resource == 'user') {
       response = await axiosInstance.post(`${apiUrl}/signup`, variables);
-    }else{
+    } else {
       response = await axiosInstance.post(`${apiUrl}/${resource}`, variables);
     }
     const { data } = response?.data;

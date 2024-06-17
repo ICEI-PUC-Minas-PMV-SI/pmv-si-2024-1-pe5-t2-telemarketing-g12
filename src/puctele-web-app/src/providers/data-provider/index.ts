@@ -2,6 +2,7 @@
 import { DataProvider } from '@refinedev/core';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import 'dotenv/config'
 
 const axiosInstance = axios.create();
 
@@ -17,12 +18,12 @@ axiosInstance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-const API_URL = 'http://localhost:4000';
+const apiUrl = process.env.API_URL || "http://localhost:4000";
 
 export const dataProvider: DataProvider = {
   getList: async ({ resource, pagination }) => {
     const { current, pageSize } = pagination ?? {};
-    const response = await axiosInstance.get(`${API_URL}/${resource}/`,{
+    const response = await axiosInstance.get(`${apiUrl}/${resource}/`,{
       params: { page: current, limit: pageSize },
     });
    
@@ -35,7 +36,7 @@ export const dataProvider: DataProvider = {
   },
 
   getOne: async ({ resource, id }) => {
-    const response = await axiosInstance.get(`${API_URL}/${resource}/${id}`);
+    const response = await axiosInstance.get(`${apiUrl}/${resource}/${id}`);
     const { data } = response.data;
 
     return {
@@ -44,7 +45,7 @@ export const dataProvider: DataProvider = {
   },
 
   getMany: async ({ resource, ids }) => {
-    const response = await axiosInstance.get(`${API_URL}/${resource}/?id=${JSON.stringify(ids)}`);
+    const response = await axiosInstance.get(`${apiUrl}/${resource}/?id=${JSON.stringify(ids)}`);
     const { rows, count } = response.data.data;
 
     return {
@@ -55,9 +56,9 @@ export const dataProvider: DataProvider = {
   create: async ({ resource, variables }) => {
     let response;
     if(resource == "user"){
-      response = await axiosInstance.post(`${API_URL}/signup`, variables);
+      response = await axiosInstance.post(`${apiUrl}/signup`, variables);
     }else{
-      response = await axiosInstance.post(`${API_URL}/${resource}`, variables);
+      response = await axiosInstance.post(`${apiUrl}/${resource}`, variables);
     }
     const { data } = response?.data;
 
@@ -66,7 +67,7 @@ export const dataProvider: DataProvider = {
     };
   },
   update: async ({ resource, id, variables }) => {
-    const response = await axiosInstance.patch(`${API_URL}/${resource}/${id}`, variables);
+    const response = await axiosInstance.patch(`${apiUrl}/${resource}/${id}`, variables);
     const { data } = response.data;
 
     return {
@@ -74,7 +75,7 @@ export const dataProvider: DataProvider = {
     };
   },
   deleteOne: async ({ resource, id, variables }) => {
-    const response = await axiosInstance.delete(`${API_URL}/${resource}/${id}`, { data: variables });
+    const response = await axiosInstance.delete(`${apiUrl}/${resource}/${id}`, { data: variables });
     const { data } = response.data;
 
     return {
@@ -82,5 +83,5 @@ export const dataProvider: DataProvider = {
     };
   },
 
-  getApiUrl: () => API_URL,
+  getApiUrl: () => apiUrl,
 };

@@ -3,13 +3,14 @@
 import type { AuthProvider } from '@refinedev/core';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import 'dotenv/config'
 
-const API_URL = "http://localhost:4000";
+const apiUrl = process.env.API_URL;
 
 export const authProvider : AuthProvider = {
   login: async ({ email, username, password, remember }) => {
     const response = await axios
-      .post(`${API_URL}/login`, {
+      .post(`${apiUrl}/login`, {
         email,
         password,
       })
